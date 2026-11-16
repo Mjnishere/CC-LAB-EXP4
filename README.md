@@ -591,10 +591,4 @@ This chart compares the memory footprint of each node. The values represent the 
 
 The chart shows the pattern of Pod placement before and after scaling. At six replicas, the workload is spread evenly as 2 pods per node. After scaling to twelve replicas, the cluster shows 4 pods on each node, confirming balanced placement across all three nodes.
 
-### 4. Service success rate
 
-![HTTP service success rate](graphs/service-success.svg)
-
-This chart summarizes the NodePort HTTP verification. All ten test requests returned HTTP 200, confirming successful access through the Service endpoint on port `30080`.
-
-These graphs are intentionally compact and are meant to complement the screenshot-driven evidence in the main experiment documentation.
