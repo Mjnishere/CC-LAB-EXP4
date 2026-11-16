@@ -568,3 +568,33 @@ Experiment-4-Kubernetes/
 The experiment demonstrated the role of Kubernetes resource requests and limits in Pod scheduling, the placement of replicas across multiple nodes, and the use of a NodePort Service to expose an application. Scaling the Deployment from six to twelve replicas showed how Kubernetes schedules additional Pods according to cluster resources. The high-resource Pod extension demonstrated how an excessive CPU request can prevent scheduling and leave a Pod in the Pending state.
 
 The practical provides a working demonstration of resource allocation, scheduling decisions, scaling, Service endpoints, and application access through Kubernetes networking.
+
+## Graphs and Visual Comparisons
+
+The repository includes a small set of SVG comparison graphs generated from the recorded experiment results. These charts summarize the key observations from the Kubernetes scheduling and service checks.
+
+### 1. Node CPU usage
+
+![Node CPU usage](graphs/node-resource-usage.svg)
+
+This chart compares the observed CPU usage of the three nodes at the start of the experiment. The control-plane node shows the highest utilization, while worker nodes remain comparatively low.
+
+### 2. Node memory usage
+
+![Node memory usage](graphs/node-memory-usage.svg)
+
+This chart compares the memory footprint of each node. The values represent the recorded point-in-time sample from `kubectl top nodes` during the early deployment stage.
+
+### 3. Pod distribution before and after scaling
+
+![Pod distribution across nodes](graphs/pod-distribution.svg)
+
+The chart shows the pattern of Pod placement before and after scaling. At six replicas, the workload is spread evenly as 2 pods per node. After scaling to twelve replicas, the cluster shows 4 pods on each node, confirming balanced placement across all three nodes.
+
+### 4. Service success rate
+
+![HTTP service success rate](graphs/service-success.svg)
+
+This chart summarizes the NodePort HTTP verification. All ten test requests returned HTTP 200, confirming successful access through the Service endpoint on port `30080`.
+
+These graphs are intentionally compact and are meant to complement the screenshot-driven evidence in the main experiment documentation.
